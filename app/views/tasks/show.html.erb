@@ -1,16 +1,18 @@
 <h1>
-  <%= @task.title %> <%= @check %>
+  <%= @task.title %>
 </h1>
 
 <p>
   <%= @task.details %>
 </p>
 
+<p>
+  <i class="fa-regular fa-<%= @task.completed ? 'square-check' : 'square' %>"></i>
+  <%=  @task.completed ? "This task is completed." : "This task is not completed yet."%>
+</p>
+
 <%= link_to("Back to tasks", tasks_path) %>
 
 <%= link_to("Edit task", edit_task_path(@task)) %>
 
-<%= link_to "Delete the task '#{@task.title}'",
-            task_path(@task),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
+<%= link_to "Delete the task '#{@task.title}'", task_path(@task), method: :delete, data: { confirm: "Are you sure?" } %>

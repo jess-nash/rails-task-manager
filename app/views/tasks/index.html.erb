@@ -2,9 +2,13 @@
 <ul>
   <% @tasks.each do |task| %>
     <li>
-      <%= link_to "#{task.completed ? '[X]' : '[_]'} #{task.title}", task_path(task) %>
+      <i class="fa-regular fa-<%= task.completed ? 'square-check' : 'square' %>"></i>
+      <%= link_to "#{task.title}", task_path(task) %> ・
+      <%= link_to "🗑️", task_path(task), method: :delete, data: { confirm: "Are you sure?" } %>
     </li>
   <% end %>
 </ul>
 
-<%= link_to("Add a new task", new_task_path) %>
+<hr>
+
+<i class="fa-solid fa-plus"></i><%= link_to("Add a new task", new_task_path) %>
